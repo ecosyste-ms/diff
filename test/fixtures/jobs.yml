@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sidekiq_id: MyString
+  status: MyString
+  url_1: MyString
+  url_2: MyString
+
+two:
+  sidekiq_id: MyString
+  status: MyString
+  url_1: MyString
+  url_2: MyString

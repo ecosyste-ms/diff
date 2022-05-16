@@ -1,0 +1,1 @@
+json.extract! @job, :url_1, :url_2, :status, :results, :created_at, :updated_at, :sidekiq_id, :sha256_1, :sha256_2
