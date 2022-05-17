@@ -22,8 +22,16 @@ class Job < ApplicationRecord
       Dir.mktmpdir do |dir|
         sha256_1 = download_file(url_1, dir)
         sha256_2 = download_file(url_2, dir)
-        results = diff(dir)
-        update!(results: results, status: 'complete', sha256_1: sha256_1, sha256_2: sha256_2)
+        if sha256_1.present? && sha256_2.present?
+          results = diff(dir)
+          update!(results: results, status: 'complete', sha256_1: sha256_1, sha256_2: sha256_2)
+        else
+          errors = []
+          errors << "Error downloading url_1: #{url_1}" if sha256_1.blank?
+          errors << "Error downloading url_2: #{url_2}" if sha256_2.blank?
+          results = {errors: errors}
+          update!(results: results, status: 'error')
+        end
       end
     rescue => e
       update(results: {error: e.inspect}, status: 'error')
