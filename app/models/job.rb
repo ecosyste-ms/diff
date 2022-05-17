@@ -22,7 +22,7 @@ class Job < ApplicationRecord
   end
 
   def details
-    results["diff"]["details"].first['details'][1..-1].map do |detail|
+    results["diff"]["details"].find{|d| d['details'].present?}['details'][1..-1].map do |detail|
       if detail['unified_diff'].present?
 "--- #{detail['source1']}
 +++ #{detail['source2']}
