@@ -1,0 +1,38 @@
+<!-- Stylesheet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+
+<!-- Javascripts -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+
+<script type="text/javascript">
+  function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const diffString = htmlDecode(document.getElementById('diff').innerHTML);
+  const targetElement = document.getElementById('diff2html');
+  const configuration = { drawFileList: true, matching: 'lines', highlight: true, fileListStartVisible: true };
+  const diff2htmlUi = new Diff2HtmlUI(targetElement, diffString, configuration);
+  diff2htmlUi.draw();
+  diff2htmlUi.highlightCode();
+});
+</script>
+
+
+<div class="col-lg-8 container-sm">
+  <h3>Job: <%= @job.id %></h3>
+  </p>
+    URL 1: <%= link_to @job.url_1, @job.url_1, target: :_blank %><br>
+    <small class='text-muted'>SHA256: <%= @job.sha256_1 %></small>
+  </p>
+  </p>
+    URL 2: <%= link_to @job.url_2, @job.url_2, target: :_blank %><br>
+    <small class='text-muted'>SHA256: <%= @job.sha256_2 %></small>
+  </p>
+
+  <pre id='diff' class='d-none'><code><%= @job.details %></code></pre>
+  <div id='diff2html'></div>
+</div>

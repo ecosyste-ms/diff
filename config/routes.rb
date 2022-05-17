@@ -16,9 +16,15 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :jobs do
         collection do
-          get :formats
+          get :index, to: 'jobs#create'
         end
       end
+    end
+  end
+
+  resources :jobs do
+    collection do
+      get :index, to: 'jobs#create'
     end
   end
 

@@ -17,6 +17,26 @@ class Job < ApplicationRecord
     update(sidekiq_id: sidekiq_id)
   end
 
+  def to_s
+    id
+  end
+
+  def details
+    results["diff"]["details"].first['details'][1..-1].map do |detail|
+      if detail['unified_diff'].present?
+"--- #{detail['source1']}
++++ #{detail['source2']}
+#{detail['unified_diff']}
+"
+      else
+        "--- #{detail['source1']}
++++ #{detail['source2']}
+#{detail['details'].first['unified_diff']}
+"
+      end
+    end.join('')
+  end
+
   def generate_diff
     begin
       Dir.mktmpdir do |dir|
