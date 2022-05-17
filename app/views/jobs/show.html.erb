@@ -14,7 +14,7 @@
   document.addEventListener('DOMContentLoaded', () => {
   const diffString = htmlDecode(document.getElementById('diff').innerHTML);
   const targetElement = document.getElementById('diff2html');
-  const configuration = { drawFileList: true, matching: 'lines', highlight: true, fileListStartVisible: true };
+  const configuration = { drawFileList: true, matching: 'lines', highlight: true, fileListStartVisible: true, fileContentToggle: false };
   const diff2htmlUi = new Diff2HtmlUI(targetElement, diffString, configuration);
   diff2htmlUi.draw();
   diff2htmlUi.highlightCode();
