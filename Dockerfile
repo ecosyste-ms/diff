@@ -27,6 +27,9 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
  && bundle config set without 'test' \
  && bundle install --jobs 2
 
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
+    apt-get install -y nodejs
+
 # ========================================================
 # Application layer
 
