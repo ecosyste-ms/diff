@@ -22,6 +22,7 @@ class Job < ApplicationRecord
   end
 
   def details
+    return nil if results["diff"].nil?
     results["diff"]["details"].find{|d| d['details'].present?}['details'][1..-1].map do |detail|
       if detail['unified_diff'].present?
 "--- #{detail['source1']}
@@ -58,11 +59,19 @@ class Job < ApplicationRecord
     end
   end
 
-  def diff(dir)
-    path_1 = File.join([dir, File.basename(url_1)])
-    path_2 = File.join([dir, File.basename(url_2)])
+  def basename_1
+    File.basename(url_1)
+  end
 
-    str = `diffoscope #{path_1} #{path_2} --json -`
+  def basename_2
+    File.basename(url_2)
+  end
+
+  def diff(dir)
+    path_1 = File.join([dir, basename_1])
+    path_2 = File.join([dir, basename_2])
+
+    str = `diffoscope #{path_1} #{path_2} --new-file --json -`
     json = JSON.parse(str)
 
     return {diff: json}

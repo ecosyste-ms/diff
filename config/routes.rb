@@ -22,11 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :jobs do
-    collection do
-      get :index, to: 'jobs#create'
-    end
-  end
+  get '/diff', to: 'jobs#diff', as: :diff
 
   root "home#index"
 end

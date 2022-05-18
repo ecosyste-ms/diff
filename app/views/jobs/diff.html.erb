@@ -1,0 +1,44 @@
+<div class="col-lg-8 container-sm">
+  <h3 class=mb-3>
+    Diff between <%= link_to @job.basename_1, @job.url_1, target: :_blank, title: @job.sha256_1 %> and <%= link_to @job.basename_2, @job.url_2, target: :_blank, title: @job.sha256_2 %>
+  </h3>
+
+  <% if @job.status == 'complete' %>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+
+    <!-- Javascripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+
+    <script type="text/javascript">
+      function htmlDecode(input) {
+        var doc = new DOMParser().parseFromString(input, "text/html");
+        return doc.documentElement.textContent;
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+      const diffString = htmlDecode(document.getElementById('diff').innerHTML);
+      const targetElement = document.getElementById('diff2html');
+      const configuration = { drawFileList: true, matching: 'lines', highlight: true, fileListStartVisible: true, fileContentToggle: false };
+      const diff2htmlUi = new Diff2HtmlUI(targetElement, diffString, configuration);
+      diff2htmlUi.draw();
+      diff2htmlUi.highlightCode();
+    });
+    </script>
+
+    <pre id='diff' class='d-none'><code><%= @job.details %></code></pre>
+    <div id='diff2html'></div>
+  <% end %>
+
+  <% if @job.status == 'pending' %>
+    Processing diff...
+    <meta http-equiv="refresh" content="2">
+  <% end %>
+
+  <% if @job.status == 'error' %>
+    Error generating diff: <code><%= @job.results['error'] %></code>
+  <% end %>
+</div>
+
+<%= debug @job.results %>

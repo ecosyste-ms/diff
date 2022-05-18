@@ -1,8 +1,8 @@
 <div class="col-lg-4 container-sm text-center">
-  <form class="row g-2 justify-content-center" action='<%= api_v1_jobs_path %>' method="post">
+  <form class="row g-2 justify-content-center" action='<%= diff_path %>'>
     <div class="col-auto">
-      <input name='url_1' type="text" class="form-control" id="url_1" placeholder="URL 1: eg https://registry.npmjs.org/log-event/-/log-event-1.1.1.tgz" size="50">
-      <input name='url_2' type="text" class="form-control" id="url_2" placeholder="URL 2: eg hhttps://registry.npmjs.org/log-event/-/log-event-1.1.2tgz" size="50">
+      <input name='url_1' type="text" class="form-control" id="url_1" placeholder="URL 1: eg https://registry.npmjs.org/log-event/-/log-event-1.1.1.tgz" size="50" required>
+      <input name='url_2' type="text" class="form-control" id="url_2" placeholder="URL 2: eg hhttps://registry.npmjs.org/log-event/-/log-event-1.1.2tgz" size="50" required>
     </div>
     <div class="col-auto">
       <button type="submit" class="btn btn-primary mb-3">Diff</button>
