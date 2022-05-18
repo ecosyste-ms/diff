@@ -24,18 +24,17 @@ class Job < ApplicationRecord
   def details
     return nil if results["diff"].nil?
     results["diff"]["details"].find{|d| d['details'].present?}['details'][1..-1].map do |detail|
-      if detail['unified_diff'].present?
-"--- #{detail['source1']}
-+++ #{detail['source2']}
-#{detail['unified_diff']}
+      lines = detail['unified_diff'].present? ? detail['unified_diff'] : detail['details'].first['unified_diff']
 "
-      else
-        "--- #{detail['source1']}
+diff --git a/#{detail['source1']} b/#{detail['source2']}
+#{'deleted file mode 000000' if detail['source2'] == '/dev/null'}
+#{'new file mode 100644' if detail['source1'] == '/dev/null'}
+index 0000001..0ddf2ba
+--- #{detail['source1']}
 +++ #{detail['source2']}
-#{detail['details'].first['unified_diff']}
+#{lines}
 "
-      end
-    end.join('')
+    end.join("\n")
   end
 
   def generate_diff
