@@ -18,6 +18,7 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
   build-essential \
   libpq-dev \
   tzdata \
+  python3-tlsh \
   diffoscope \
   jsbeautifier \
  && gem update --system \
