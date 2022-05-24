@@ -12,12 +12,14 @@ COPY Gemfile Gemfile.lock $APP_ROOT/
 
 # * Setup system
 # * Install Ruby dependencies
-RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrade && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrade && apt-get install -yq --no-install-recommends \
   curl \
   build-essential \
   libpq-dev \
   tzdata \
+  unzip \
+  zip \
+  tlsh \
   python3-tlsh \
   diffoscope \
   jsbeautifier \
