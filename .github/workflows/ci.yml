@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependent libraries
-        run: sudo apt-get install libpq-dev diffoscope --fix-missing
+        run: sudo apt-get update && sudo apt-get install libpq-dev diffoscope
       - name: Set up Node
         uses: actions/setup-node@v3.2.0
         with:
