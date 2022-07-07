@@ -64,6 +64,8 @@ components:
     Job:
       type: object
       properties:
+        id:
+          type: string
         url_1:
           type: string
         url_2:
