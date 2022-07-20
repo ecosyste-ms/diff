@@ -45,8 +45,7 @@ class Job < ApplicationRecord
   end
 
   def unwrap_details(detail)
-    return '' if detail['source1'] == 'file list' && detail['source2'] == 'file list'
-    return '' if detail['source1'] == 'zipinfo {}' && detail['source2'] == 'zipinfo {}'
+    return '' if ['file list', 'zipinfo {}', 'zipinfo /dev/stdin'].include?(detail['source1'])
     if detail['unified_diff'].present?
       lines = detail['unified_diff']
     else
