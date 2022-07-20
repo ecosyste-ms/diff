@@ -22,6 +22,7 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
   python3-tlsh \
   diffoscope \
   jsbeautifier \
+  default-jdk-headless \
  && gem update --system \
  && gem install bundler foreman \
  && bundle config set force_ruby_platform true \
