@@ -257,7 +257,7 @@ GEM
       sprockets (>= 3.0.0)
     strscan (3.0.3)
     thor (1.2.1)
-    tilt (2.0.10)
+    tilt (2.0.11)
     timeout (0.3.0)
     typhoeus (1.4.0)
       ethon (>= 0.9.0)
