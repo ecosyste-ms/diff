@@ -48,8 +48,10 @@ class Job < ApplicationRecord
     return '' if ['file list', 'zipinfo {}', 'zipinfo /dev/stdin'].include?(detail['source1'])
     if detail['unified_diff'].present?
       lines = detail['unified_diff']
-    else
+    elsif detail['details']
       lines = detail['details'].first['unified_diff']
+    else
+      return ''
     end
 "
 diff --git a/#{detail['source1']} b/#{detail['source2']}
