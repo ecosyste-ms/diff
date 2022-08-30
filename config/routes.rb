@@ -24,5 +24,9 @@ Rails.application.routes.draw do
 
   get '/diff', to: 'jobs#diff', as: :diff
 
+  get '/404', to: 'errors#not_found'
+  get '/422', to: 'errors#unprocessable'
+  get '/500', to: 'errors#internal'
+  
   root "home#index"
 end
