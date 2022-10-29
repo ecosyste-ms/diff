@@ -23,6 +23,7 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
   diffoscope \
   jsbeautifier \
   default-jdk-headless \
+  netcat \
  && gem update --system \
  && gem install bundler foreman \
  && bundle config set force_ruby_platform true \

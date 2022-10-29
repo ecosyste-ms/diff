@@ -31,13 +31,13 @@ Alternatively you can use the existing docker configuration files to run the app
 
 Run this command from the root directory of the project to start the service.
 
-`docker-compose up --build`
+`docker compose up --build`
 
 You can then load up [http://localhost:3000](http://localhost:3000) to access the service.
 
 For access the rails console use the following command:
 
-`docker-compose exec app rails console`
+`docker compose exec app rails console`
 
 ## Tests
 
@@ -56,6 +56,16 @@ To process the tasks run the following command:
 `bundle exec sidekiq`
 
 You can also view the status of the workers and their queues from the web interface http://localhost:3000/sidekiq
+
+### Docker
+
+If you're using docker you can start the task by running:
+
+`docker compose exec app sh`
+
+to get into the container, and then:
+
+`bundle exec sidekiq`
 
 ## Deployment
 

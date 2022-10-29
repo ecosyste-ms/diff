@@ -12,11 +12,14 @@ services:
       - RAILS_ENV=development
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=development
-      - DATABASE_HOST=database.service.diff.internal
+      - POSTGRES_HOST=database.service.diff.internal
+      - POSTGRES_PORT=5432
+      - REDIS_URL=redis://redis.service.diff.internal:6379
     networks:
       - internal
     depends_on:
       - database.service.diff.internal
+      - redis.service.diff.internal
 
   database.service.diff.internal:
     image: postgres:14.1-alpine
