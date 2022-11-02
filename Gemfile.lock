@@ -132,7 +132,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.16.3)
-    mocha (1.16.0)
+    mocha (2.0.0)
     msgpack (1.6.0)
     net-imap (0.3.1)
       net-protocol
@@ -267,7 +267,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.3)
+    zeitwerk (2.6.4)
     zlib (2.1.1)
 
 PLATFORMS
@@ -298,12 +298,12 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.3)
   rails-controller-testing
-  redis
+  redis (< 5)
   rswag-api
   rswag-ui
   sassc-rails
   shoulda
-  sidekiq
+  sidekiq (< 7)
   sidekiq-status
   sidekiq-unique-jobs
   sprockets-rails
