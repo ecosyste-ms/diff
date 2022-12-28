@@ -1,4 +1,4 @@
-FROM ruby:3.1.3-slim-buster
+FROM ruby:3.2.0-slim-buster
 
 ENV APP_ROOT /usr/src/app
 ENV DATABASE_PORT 5432
