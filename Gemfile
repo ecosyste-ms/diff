@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.2.1"
 
 gem "rails", "~> 7.0.4"
 gem "sprockets-rails"
@@ -15,9 +15,8 @@ gem "faraday"
 gem "faraday-retry"
 gem "faraday-gzip"
 gem "faraday-follow_redirects"
-gem "hiredis"
-gem "redis", "< 5", require: ["redis", "redis/connection/hiredis"]
-gem "sidekiq", "< 7"
+gem "redis"
+gem "sidekiq"
 gem "sidekiq-unique-jobs"
 gem 'sidekiq-status'
 gem "pghero"
@@ -30,7 +29,7 @@ gem 'rswag-api'
 gem 'rswag-ui'
 gem 'typhoeus'
 gem 'google-protobuf'
-gem 'nokogiri', '1.14.2'
+gem 'nokogiri'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
