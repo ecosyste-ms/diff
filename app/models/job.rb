@@ -36,7 +36,7 @@ class Job < ApplicationRecord
   end
 
   def details
-    return nil if results["diff"].nil?
+    return nil if results["diff"].nil? || results["diff"]["details"].nil?
     results["diff"]["details"].map do |detail|
       if detail['details']
         detail['details'].map do |subdetail|
