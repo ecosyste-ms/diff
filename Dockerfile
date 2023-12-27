@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-slim-buster
+FROM ruby:3.2.2-slim-bullseye
 
 ENV APP_ROOT /usr/src/app
 ENV DATABASE_PORT 5432
@@ -26,7 +26,6 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
   netcat \
  && gem update --system \
  && gem install bundler foreman \
- && bundle config set force_ruby_platform true \
  && bundle config --global frozen 1 \
  && bundle config set without 'test' \
  && bundle install --jobs 2
