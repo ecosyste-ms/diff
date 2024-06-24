@@ -24,6 +24,7 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
   jsbeautifier \
   default-jdk-headless \
   netcat \
+  git \
  && gem update --system \
  && gem install bundler foreman \
  && bundle config --global frozen 1 \
