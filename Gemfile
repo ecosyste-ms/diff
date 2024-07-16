@@ -31,7 +31,6 @@ gem 'typhoeus'
 gem 'google-protobuf'
 gem 'nokogiri'
 gem 'appsignal'
-gem "net-pop", github: "ruby/net-pop" # temporary fix for net-pop until ruby 3.3.4
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
