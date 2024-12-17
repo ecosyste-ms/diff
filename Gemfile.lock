@@ -74,7 +74,7 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    appsignal (4.2.2)
+    appsignal (4.2.3)
       logger
       rack
     autoprefixer-rails (10.4.19.0)
@@ -253,7 +253,7 @@ GEM
       redis-client (>= 0.22.0)
     redis-client (0.23.0)
       connection_pool
-    reline (0.5.12)
+    reline (0.6.0)
       io-console (~> 0.5)
     rexml (3.4.0)
     rswag-api (2.16.0)
@@ -320,7 +320,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.7.1)
-    zlib (3.2.0)
+    zlib (3.2.1)
 
 PLATFORMS
   aarch64-linux-musl
@@ -370,4 +370,4 @@ RUBY VERSION
    ruby 3.3.6p108
 
 BUNDLED WITH
-   2.5.23
+   2.6.0
