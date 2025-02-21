@@ -19,6 +19,7 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
   tzdata \
   unzip \
   zip \
+  zlib1g-dev \
   python3-tlsh \
   diffoscope \
   jsbeautifier \
