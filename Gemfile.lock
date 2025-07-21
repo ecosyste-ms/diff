@@ -100,9 +100,6 @@ GEM
       rexml
     crass (1.0.6)
     date (3.4.1)
-    debug (1.11.0)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
     drb (2.2.3)
     erb (5.0.2)
     erubi (1.13.1)
@@ -353,7 +350,6 @@ DEPENDENCIES
   bootsnap
   bootstrap
   bootstrap-icons-helper (~> 2.0)
-  debug
   faraday
   faraday-follow_redirects
   faraday-gzip
@@ -415,7 +411,6 @@ CHECKSUMS
   crack (1.0.0) sha256=c83aefdb428cdc7b66c7f287e488c796f055c0839e6e545fec2c7047743c4a49
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   date (3.4.1) sha256=bf268e14ef7158009bfeaec40b5fa3c7271906e88b196d958a89d4b408abe64f
-  debug (1.11.0) sha256=1425db64cfa0130c952684e3dc974985be201dd62899bf4bbe3f8b5d6cf1aef2
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   erb (5.0.2) sha256=d30f258143d4300fb4ecf430042ac12970c9bb4b33c974a545b8f58c1ec26c0f
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
