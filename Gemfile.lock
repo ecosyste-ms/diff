@@ -378,7 +378,6 @@ DEPENDENCIES
   sidekiq-unique-jobs
   sprockets-rails
   typhoeus
-  tzinfo-data
   web-console
   webmock
 
