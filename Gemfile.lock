@@ -362,7 +362,7 @@ DEPENDENCIES
   mocha
   nokogiri
   ostruct
-  pg (~> 1.5)
+  pg
   pg_query
   pghero
   puma (~> 6.3)
