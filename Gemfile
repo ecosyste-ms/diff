@@ -23,8 +23,6 @@ gem 'sidekiq-status'
 gem "pghero"
 gem "pg_query"
 gem 'bootstrap'
-gem "rack-attack"
-gem "rack-attack-rate-limit", require: "rack/attack/rate-limit"
 gem 'rack-cors'
 gem 'rswag-api'
 gem 'rswag-ui'
