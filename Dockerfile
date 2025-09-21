@@ -1,7 +1,7 @@
-FROM ruby:3.4.6-slim-bullseye
+FROM ruby:3.4.6-slim-bookworm
 
-ENV APP_ROOT /usr/src/app
-ENV DATABASE_PORT 5432
+ENV APP_ROOT=/usr/src/app
+ENV DATABASE_PORT=5432
 WORKDIR $APP_ROOT
 
 # =============================================
@@ -24,7 +24,7 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
   diffoscope \
   jsbeautifier \
   default-jdk-headless \
-  netcat \
+  netcat-openbsd \
   git \
   libyaml-dev \
  && gem update --system \
