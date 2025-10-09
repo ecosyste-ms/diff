@@ -1,4 +1,4 @@
-FROM ruby:3.4.6-slim-bookworm
+FROM ruby:3.4.7-slim-bookworm
 
 ENV APP_ROOT=/usr/src/app
 ENV DATABASE_PORT=5432
