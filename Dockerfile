@@ -1,7 +1,7 @@
 # =============================================
 # Builder stage
 # =============================================
-FROM ruby:3.4.7-alpine AS builder
+FROM ruby:3.4.8-alpine AS builder
 
 ENV APP_ROOT=/usr/src/app
 ENV DATABASE_PORT=5432
@@ -39,7 +39,7 @@ RUN RAILS_ENV=production bundle exec rake assets:precompile
 # =============================================
 # Final stage
 # =============================================
-FROM ruby:3.4.7-alpine
+FROM ruby:3.4.8-alpine
 
 ENV APP_ROOT=/usr/src/app
 ENV DATABASE_PORT=5432
