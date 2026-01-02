@@ -61,6 +61,9 @@ GEM
       rexml
     crass (1.0.6)
     date (3.5.0)
+    diffoscope (0.1.0)
+      purl (>= 1.7.0)
+      typhoeus
     drb (2.2.3)
     erb (6.0.0)
     erubi (1.13.1)
@@ -160,6 +163,8 @@ GEM
     public_suffix (6.0.2)
     puma (7.1.0)
       nio4r (~> 2.0)
+    purl (1.7.0)
+      addressable (~> 2.8)
     racc (1.8.1)
     rack (3.2.4)
     rack-cors (3.0.0)
@@ -290,6 +295,7 @@ DEPENDENCIES
   bootsnap
   bootstrap
   bootstrap-icons
+  diffoscope
   faraday
   faraday-follow_redirects
   faraday-gzip
@@ -316,7 +322,6 @@ DEPENDENCIES
   sidekiq-status
   sidekiq-unique-jobs
   sprockets-rails
-  typhoeus
   web-console
   webmock
 
@@ -342,6 +347,7 @@ CHECKSUMS
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   date (3.5.0) sha256=5e74fd6c04b0e65d97ad4f3bb5cb2d8efb37f386cc848f46310b4593ffc46ee5
+  diffoscope (0.1.0) sha256=47925824127431e6b9e02c4279e80f7bc52104cfd89ae2fa1d213fdef24ae77a
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   erb (6.0.0) sha256=2730893f9d8c9733f16cab315a4e4b71c1afa9cabc1a1e7ad1403feba8f52579
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
@@ -398,6 +404,7 @@ CHECKSUMS
   psych (5.2.6) sha256=814328aa5dcb6d604d32126a20bc1cbcf05521a5b49dbb1a8b30a07e580f316e
   public_suffix (6.0.2) sha256=bfa7cd5108066f8c9602e0d6d4114999a5df5839a63149d3e8b0f9c1d3558394
   puma (7.1.0) sha256=e45c10cb124f224d448c98db653a75499794edbecadc440ad616cf50f2fd49dd
+  purl (1.7.0) sha256=e25a6b951975e94104a17d8d40e8529fa882a5a63717c68af2390e9b8d0ac3f2
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
   rack (3.2.4) sha256=5d74b6f75082a643f43c1e76b419c40f0e5527fcfee1e669ac1e6b73c0ccb6f6
   rack-cors (3.0.0) sha256=7b95be61db39606906b61b83bd7203fa802b0ceaaad8fcb2fef39e097bf53f68

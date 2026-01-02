@@ -22,23 +22,27 @@ class JobTest < ActiveSupport::TestCase
     @job.generate_diff_async
   end
 
-  test 'diff' do
-    Dir.mktmpdir do |dir|
-      FileUtils.cp(File.join(file_fixture_path, 'log-event-1.1.1.tgz'), dir)
-      FileUtils.cp(File.join(file_fixture_path, 'log-event-1.1.2.tgz'), dir)
-      results = @job.diff(dir)
-      
-      assert_equal results[:diff].keys, ["diffoscope-json-version", "source1", "source2", "unified_diff", "details"]
-    end
+  test 'generate_diff' do
+    result = mock
+    result.stubs(:to_h).returns({ "source1" => "a", "source2" => "b" })
+    result.stubs(:sha256_1).returns("abc123")
+    result.stubs(:sha256_2).returns("def456")
+
+    Diffoscope.expects(:compare).with(@job.url_1, @job.url_2, new_file: true).returns(result)
+
+    @job.generate_diff
+
+    assert_equal "complete", @job.status
+    assert_equal "abc123", @job.sha256_1
+    assert_equal "def456", @job.sha256_2
   end
 
-  test 'download_file' do
-    stub_request(:get, "https://registry.npmjs.org/log-event/-/log-event-1.1.1.tgz")
-      .to_return({ status: 200, body: file_fixture('log-event-1.1.1.tgz') })
+  test 'generate_diff handles download error' do
+    Diffoscope.expects(:compare).raises(Diffoscope::DownloadError.new("Failed to download"))
 
-    Dir.mktmpdir do |dir|
-      sha256 = @job.download_file("https://registry.npmjs.org/log-event/-/log-event-1.1.1.tgz", dir)
-      assert_equal sha256, '9c7c23280d813b48c20f10af6401e9eb4d09115e2c5468fa0a582164c92b779a'
-    end
+    @job.generate_diff
+
+    assert_equal "error", @job.status
+    assert_includes @job.results["errors"], "Failed to download"
   end
 end
