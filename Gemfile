@@ -47,6 +47,7 @@ group :test do
   gem "webmock"
   gem "mocha"
   gem "rails-controller-testing"
+  gem "minitest", "< 6.0"
 end
 
 gem "bootstrap-icons", require: "bootstrap_icons"
