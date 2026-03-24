@@ -4,11 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '4.0.2'
 
 # Pick the frameworks you want:
-gem "activemodel", "~> 8.0.0"
-gem "activerecord", "~> 8.0.0"
-gem "actionpack", "~> 8.0.0"
-gem "actionview", "~> 8.0.0"
-gem "railties", "~> 8.0.0"
+gem "activemodel", "~> 8.1.2"
+gem "activerecord", "~> 8.1.2"
+gem "actionpack", "~> 8.1.2"
+gem "actionview", "~> 8.1.2"
+gem "railties", "~> 8.1.2"
 
 gem "secure_headers"
 gem "sprockets-rails"
