@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '4.0.1'
+ruby '4.0.2'
 
 # Pick the frameworks you want:
 gem "activemodel", "~> 8.0.0"
