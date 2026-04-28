@@ -49,10 +49,41 @@ class Job < ApplicationRecord
     result.to_unified_diff
   end
 
+  def normalize_zipnote_diffs(diff)
+    normalize_diff_details(diff)
+    diff
+  end
+
+  def normalize_diff_details(detail)
+    detail["details"]&.each { |subdetail| normalize_diff_details(subdetail) }
+
+    return unless detail["unified_diff"].present?
+    return unless [detail["source1"], detail["source2"]].compact.any? { |source| source.include?("zipnote") }
+
+    detail["unified_diff"] = sort_zipnote_filename_diff(detail["unified_diff"])
+  end
+
+  def sort_zipnote_filename_diff(diff)
+    filename_lines, other_lines = diff.lines.partition do |line|
+      line.start_with?("-Filename: ") || line.start_with?("+Filename: ")
+    end
+
+    removed = filename_lines.select { |line| line.start_with?("-Filename: ") }.sort_by { |line| zipnote_sort_key(line) }
+    added = filename_lines.select { |line| line.start_with?("+Filename: ") }.sort_by { |line| zipnote_sort_key(line) }
+
+    return diff if removed.empty? || added.empty? || removed.length != added.length
+
+    removed.zip(added).flat_map { |old_line, new_line| [old_line, new_line] }.join + other_lines.join
+  end
+
+  def zipnote_sort_key(line)
+    line.sub(/^[+-]Filename: /, '').sub(%r{^[^/]+/}, '')
+  end
+
   def generate_diff
     result = Diffoscope.compare(url_1, url_2, new_file: true)
     update!(
-      results: { diff: result.to_h },
+      results: { diff: normalize_zipnote_diffs(result.to_h) },
       status: 'complete',
       sha256_1: result.sha256_1,
       sha256_2: result.sha256_2
