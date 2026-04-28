@@ -22,6 +22,22 @@ class JobTest < ActiveSupport::TestCase
     @job.generate_diff_async
   end
 
+  test 'normalize_zipnote_diffs sorts zipnote filename entries recursively' do
+    diff = {
+      "details" => [
+        {
+          "source1" => "zipnote {}",
+          "source2" => "zipnote {}",
+          "unified_diff" => "-Filename: pkg@v1/z.yml\n+Filename: pkg@v2/a.yml\n-Filename: pkg@v1/a.yml\n+Filename: pkg@v2/z.yml\n Comment:\n"
+        }
+      ]
+    }
+
+    @job.normalize_zipnote_diffs(diff)
+
+    assert_equal "-Filename: pkg@v1/a.yml\n+Filename: pkg@v2/a.yml\n-Filename: pkg@v1/z.yml\n+Filename: pkg@v2/z.yml\n Comment:\n", diff["details"].first["unified_diff"]
+  end
+
   test 'generate_diff' do
     result = mock
     result.stubs(:to_h).returns({ "source1" => "a", "source2" => "b" })
