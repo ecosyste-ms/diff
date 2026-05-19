@@ -89,22 +89,22 @@ GEM
     ffi (1.17.4-arm64-darwin)
     ffi (1.17.4-x86_64-linux-gnu)
     ffi (1.17.4-x86_64-linux-musl)
-    google-protobuf (4.34.1)
+    google-protobuf (4.35.0)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-aarch64-linux-gnu)
+    google-protobuf (4.35.0-aarch64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-aarch64-linux-musl)
+    google-protobuf (4.35.0-aarch64-linux-musl)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-arm64-darwin)
+    google-protobuf (4.35.0-arm64-darwin)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-x86_64-linux-gnu)
+    google-protobuf (4.35.0-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-x86_64-linux-musl)
+    google-protobuf (4.35.0-x86_64-linux-musl)
       bigdecimal
       rake (~> 13.3)
     hashdiff (1.2.1)
@@ -370,12 +370,12 @@ CHECKSUMS
   ffi (1.17.4-arm64-darwin) sha256=19071aaf1419251b0a46852abf960e77330a3b334d13a4ab51d58b31a937001b
   ffi (1.17.4-x86_64-linux-gnu) sha256=9d3db14c2eae074b382fa9c083fe95aec6e0a1451da249eab096c34002bc752d
   ffi (1.17.4-x86_64-linux-musl) sha256=3fdf9888483de005f8ef8d1cf2d3b20d86626af206cbf780f6a6a12439a9c49e
-  google-protobuf (4.34.1) sha256=347181542b8d659c60f028fa3791c9cccce651a91ad27782dbc5c5e374796cdc
-  google-protobuf (4.34.1-aarch64-linux-gnu) sha256=f9c07607dc139c895f2792a7740fcd01cd94d4d7b0e0a939045b50d7999f0b1d
-  google-protobuf (4.34.1-aarch64-linux-musl) sha256=db58e5a4a492b43c6614486aea31b7fb86955b175d1d48f28ebf388f058d78a9
-  google-protobuf (4.34.1-arm64-darwin) sha256=2745061f973119e6e7f3c81a0c77025d291a3caa6585a2cd24a25bbc7bedb267
-  google-protobuf (4.34.1-x86_64-linux-gnu) sha256=87088c9fd8e47b5b40ca498fc1195add6149e941ff7e81c532a5b0b8876d4cc9
-  google-protobuf (4.34.1-x86_64-linux-musl) sha256=8c0e91436fbe504ffc64f0bd621f2e69adbcce8ed2c58439d7a21117069cfdd7
+  google-protobuf (4.35.0) sha256=95346162c792ed78c9a28cbf2d937a53f706de6df36a27471582f63f03c30c0d
+  google-protobuf (4.35.0-aarch64-linux-gnu) sha256=2cabd61b420918aec1564f9f7414e455bf922d20c5f8139d62783df5558a7aea
+  google-protobuf (4.35.0-aarch64-linux-musl) sha256=f6b11f3420a4564f68e8233c95eac6924f6a727dfc2f81a56af2e09add551501
+  google-protobuf (4.35.0-arm64-darwin) sha256=66ab26d3fc82b8950702e53ab16c198e3c0ea3f2a38aaaf1f32152da45593ac5
+  google-protobuf (4.35.0-x86_64-linux-gnu) sha256=999226f3b00cd9fddb1b26851d16060212fa1d90c406aaad47e574682b716059
+  google-protobuf (4.35.0-x86_64-linux-musl) sha256=be0218520d77b2aee898b363514b03819f6f63f9c041ae0d0d79b4ce5247bffd
   hashdiff (1.2.1) sha256=9c079dbc513dfc8833ab59c0c2d8f230fa28499cc5efb4b8dd276cf931457cd1
   i18n (1.14.8) sha256=285778639134865c5e0f6269e0b818256017e8cde89993fdfcbfb64d088824a5
   io-console (0.8.2) sha256=d6e3ae7a7cc7574f4b8893b4fca2162e57a825b223a177b7afa236c5ef9814cc
