@@ -1,6 +1,6 @@
 class Api::V1::JobsController < Api::V1::ApplicationController
   def create
-    @job = Job.new(url_1: params[:url_1], url_2: params[:url_2], status: 'pending', ip: request.remote_ip)
+    @job = Job.new(url_1: params[:url_1], url_2: params[:url_2], status: 'pending', ip: client_ip)
     if @job.save
       @job.generate_diff_async
       redirect_to api_v1_job_path(@job)

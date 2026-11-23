@@ -9,6 +9,11 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     assert_template 'jobs/diff'
   end
 
+  test 'records the client ip from cloudflare' do
+    get diff_path(url_1: 'https://example.com/a.tgz', url_2: 'https://example.com/b.tgz'), headers: { 'CF-Connecting-IP' => '203.0.113.7', 'X-Forwarded-For' => '203.0.113.7, 195.154.80.114' }
+    assert_equal '203.0.113.7', Job.order(:created_at).last.ip
+  end
+
   test 'starts processing a diff of purls' do
     get diff_path(url_1: 'pkg:gem/rake@13.0.0', url_2: 'pkg:gem/rake@13.0.1')
     assert_response :success

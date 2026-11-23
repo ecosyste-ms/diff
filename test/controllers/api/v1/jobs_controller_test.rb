@@ -7,6 +7,26 @@ class ApiV1JobsControllerTest < ActionDispatch::IntegrationTest
     assert_match /\/api\/v1\/jobs\//, @response.location
   end
 
+  test 'records the client ip from cloudflare' do
+    urls = { url_1: 'https://example.com/a.tgz', url_2: 'https://example.com/b.tgz' }
+
+    post api_v1_jobs_path(urls), headers: { 'CF-Connecting-IP' => '203.0.113.7', 'X-Forwarded-For' => '203.0.113.7, 162.158.122.9, 195.154.80.114' }
+    assert_equal '203.0.113.7', Job.order(:created_at).last.ip
+
+    post api_v1_jobs_path(urls), headers: { 'CF-Connecting-IP' => '2001:db8::1' }
+    assert_equal '2001:db8::1', Job.order(:created_at).last.ip
+  end
+
+  test 'falls back to remote_ip without a usable cloudflare header' do
+    urls = { url_1: 'https://example.com/a.tgz', url_2: 'https://example.com/b.tgz' }
+
+    post api_v1_jobs_path(urls), headers: { 'X-Forwarded-For' => '203.0.113.7, 198.51.100.9' }
+    assert_equal '198.51.100.9', Job.order(:created_at).last.ip
+
+    post api_v1_jobs_path(urls), headers: { 'CF-Connecting-IP' => '<script>', 'X-Forwarded-For' => '198.51.100.9' }
+    assert_equal '198.51.100.9', Job.order(:created_at).last.ip
+  end
+
   test 'submit an invalid job' do
     post api_v1_jobs_path
     assert_response :bad_request
