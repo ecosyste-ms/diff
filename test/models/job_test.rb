@@ -27,6 +27,29 @@ class JobTest < ActiveSupport::TestCase
     end
   end
 
+  test 'clean_up removes jobs older than a week in any status' do
+    old = %w[pending queued working complete error].map do |status|
+      Job.create!(url_1: 'https://example.com/a.tgz', url_2: 'https://example.com/b.tgz', status: status, created_at: 8.days.ago)
+    end
+    recent = Job.create!(url_1: 'https://example.com/a.tgz', url_2: 'https://example.com/b.tgz', status: 'pending', created_at: 6.days.ago)
+
+    Job.clean_up
+
+    assert_empty Job.where(id: old.map(&:id))
+    assert Job.exists?(recent.id)
+    assert Job.exists?(@job.id)
+  end
+
+  test 'cron commands are defined rake tasks' do
+    Rails.application.load_tasks if Rake::Task.tasks.empty?
+    commands = JSON.parse(Rails.root.join('app.json').read)['cron'].map { |entry| entry['command'] }
+
+    commands.each do |command|
+      task = command[/rake (\S+)/, 1]
+      assert Rake::Task.task_defined?(task), "#{task} is not a rake task"
+    end
+  end
+
   test 'check_status' do
     Sidekiq::Status.expects(:status).with(@job.sidekiq_id).returns(:queued)
     @job.check_status
