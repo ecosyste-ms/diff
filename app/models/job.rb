@@ -1,6 +1,7 @@
 class Job < ApplicationRecord
   validates_presence_of :url_1, :url_2
   validates_uniqueness_of :id
+  validate :urls_are_remote
 
   scope :status, ->(status) { where(status: status) }
 
@@ -10,6 +11,25 @@ class Job < ApplicationRecord
 
   def self.check_statuses
     Job.where(status: ["queued", "working"]).find_each(&:check_status)
+  end
+
+  def self.remote_input?(input)
+    if input.start_with?('pkg:')
+      Purl.parse(input).present?
+    else
+      uri = URI.parse(input)
+      uri.is_a?(URI::HTTP) && uri.hostname.present?
+    end
+  rescue URI::InvalidURIError, Purl::Error
+    false
+  end
+
+  def urls_are_remote
+    [:url_1, :url_2].each do |attribute|
+      value = self[attribute]
+      next if value.blank?
+      errors.add(attribute, 'must be an http(s) URL or a purl') unless Job.remote_input?(value)
+    end
   end
 
   def check_status
@@ -50,7 +70,7 @@ class Job < ApplicationRecord
   end
 
   def generate_diff
-    result = Diffoscope.compare(url_1, url_2, new_file: true)
+    result = Diffoscope.compare(url_1, url_2, new_file: true, local_files: false)
     update!(
       results: { diff: result.to_h },
       status: 'complete',

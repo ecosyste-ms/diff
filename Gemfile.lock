@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/andrew/diffoscope.git
+  revision: d72edce42e1ee3c79c603f04896707f4b3ce73a5
+  branch: main
+  specs:
+    diffoscope (0.1.0)
+      purl (>= 1.7.0)
+      typhoeus
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,7 +45,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.9.2)
+    addressable (2.10.0)
       public_suffix (>= 2.0.2, < 8.0)
     appsignal (5.0.7)
       logger
@@ -60,9 +69,6 @@ GEM
       bigdecimal
       rexml
     crass (1.0.8)
-    diffoscope (0.1.0)
-      purl (>= 1.7.0)
-      typhoeus
     drb (2.2.3)
     erb (6.0.7)
     erubi (1.13.1)
@@ -280,8 +286,8 @@ GEM
     tilt (2.9.0)
     timeout (0.6.1)
     tsort (0.2.0)
-    typhoeus (1.7.1)
-      ethon (>= 0.19.1, < 0.20.0)
+    typhoeus (1.8.0)
+      ethon (>= 0.19.2, < 0.20.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (1.1.2)
@@ -314,7 +320,7 @@ DEPENDENCIES
   bootsnap
   bootstrap
   bootstrap-icons
-  diffoscope
+  diffoscope!
   faraday
   faraday-follow_redirects
   faraday-gzip
@@ -351,7 +357,7 @@ CHECKSUMS
   activemodel (8.1.4.1) sha256=063caf105372fbc98b2d789e4be23de63ac5c043f7d9330f04e2caddb7012805
   activerecord (8.1.4.1) sha256=bd65599ca0b5d210937f835d42c7aff69d271741c75aab022730be6cbce67e87
   activesupport (8.1.4.1) sha256=16ac4f341ca65c85a1fcdb8ac73f68891aae9e3c4a6f9c3a27daed8b00017ed7
-  addressable (2.9.2) sha256=9117c7e7d6ee07230e75ce41fb9401ae55354dc654fcd0e862ba41d539e9a610
+  addressable (2.10.0) sha256=5e13b9c001adf01dd65ad6e0d2a91d2bc07885c0ff2b83f48cbcd95e08d9de62
   appsignal (5.0.7) sha256=7316aa63071f2cba80be44e3571f7a8fe1e3e18781d4a6029016456df8b1a8e0
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   bigdecimal (4.1.3) sha256=61ebe1e5e559bdc3cc6f2c0ee7f427321fc838f59611c294356eb04d6e21cf66
@@ -367,7 +373,7 @@ CHECKSUMS
   connection_pool (3.0.3) sha256=e0f8ee3ee0039396753e06e8a2dde0ef028e40f7df29e97f57da7577c489cb5e
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   crass (1.0.8) sha256=7a0145c7a2c59f8e7923b3a69ce819c444823a00a5127d805298fea13be24efe
-  diffoscope (0.1.0) sha256=47925824127431e6b9e02c4279e80f7bc52104cfd89ae2fa1d213fdef24ae77a
+  diffoscope (0.1.0)
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   erb (6.0.7) sha256=c5ca6dc25b0ef974a44dc8f59fe847577122483b1968a38dec305c60bf91ee92
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
@@ -471,7 +477,7 @@ CHECKSUMS
   tilt (2.9.0) sha256=da5735d0280bba96e9a91041bb14aee435ccad5c17b0fa519249ae543d9aa3a5
   timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
-  typhoeus (1.7.1) sha256=86dcb6d787ee08e34947c9436b24af3c4b02880dc83c466b6ca4dbfc53c2ee7f
+  typhoeus (1.8.0) sha256=c196d607908bc3350a191af673c24cf3ce6052c5ab0f6d485e55b3b36a28b421
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   uri (1.1.2) sha256=89292e98eabbef6248b0a0ed5e7e398e152f83f17560023a6d94a7f492b169fb
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844

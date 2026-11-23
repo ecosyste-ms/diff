@@ -11,6 +11,22 @@ class JobTest < ActiveSupport::TestCase
     @job = Job.create(url_1: 'https://registry.npmjs.org/log-event/-/log-event-1.1.1.tgz', url_2: 'https://registry.npmjs.org/log-event/-/log-event-1.1.2.tgz', sidekiq_id: '123', ip: '123.456.78.9')
   end
 
+  test 'accepts http, https and purl inputs' do
+    assert Job.new(url_1: 'http://example.com/a.tgz', url_2: 'pkg:gem/rails@7.0.0').valid?
+  end
+
+  test 'rejects inputs that are not urls or purls' do
+    ['/etc/passwd', '/proc/self/environ', 'config/database.yml', '../Gemfile', 'file:///etc/passwd',
+     'ftp://example.com/a.tgz', 'http://', 'https:///a.tgz', 'pkg:', "/etc/passwd\nhttps://example.com/"].each do |input|
+      job = Job.new(url_1: input, url_2: 'https://example.com/b.tgz')
+      assert_not job.valid?, input
+      assert_equal ['Url 1 must be an http(s) URL or a purl'], job.errors.full_messages, input
+
+      job = Job.new(url_1: 'https://example.com/a.tgz', url_2: input)
+      assert_not job.valid?, input
+    end
+  end
+
   test 'check_status' do
     Sidekiq::Status.expects(:status).with(@job.sidekiq_id).returns(:queued)
     @job.check_status
@@ -28,7 +44,7 @@ class JobTest < ActiveSupport::TestCase
     result.stubs(:sha256_1).returns("abc123")
     result.stubs(:sha256_2).returns("def456")
 
-    Diffoscope.expects(:compare).with(@job.url_1, @job.url_2, new_file: true).returns(result)
+    Diffoscope.expects(:compare).with(@job.url_1, @job.url_2, new_file: true, local_files: false).returns(result)
 
     @job.generate_diff
 
