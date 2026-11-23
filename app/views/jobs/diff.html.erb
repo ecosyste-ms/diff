@@ -37,6 +37,6 @@
   <% end %>
 
   <% if @job.status == 'error' %>
-    Error generating diff: <code><%= @job.results['error'] %></code>
+    Error generating diff: <code><%= @job.error_message %></code>
   <% end %>
 </div>

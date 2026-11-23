@@ -8,7 +8,18 @@ require 'mocha/minitest'
 require 'sidekiq_unique_jobs/testing'
 Sidekiq.testing!(:fake)
 
+# shoulda-context overrides format_rerun_snippet with a version that calls an instance-level executable
+Rails::TestUnitReporter.class_eval do
+  def executable
+    self.class.executable
+  end
+end
+
 class ActiveSupport::TestCase
+  setup do
+    Diffoscope::Resolver.any_instance.stubs(:resolve_host).returns(["93.184.216.34"])
+  end
+
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
       with.test_framework :minitest

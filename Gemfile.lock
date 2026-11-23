@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/andrew/diffoscope.git
-  revision: d72edce42e1ee3c79c603f04896707f4b3ce73a5
+  revision: 0f2bb4c3776668d1e3dfeeca134874f8639af007
   branch: main
   specs:
     diffoscope (0.1.0)

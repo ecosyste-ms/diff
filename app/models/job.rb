@@ -65,8 +65,12 @@ class Job < ApplicationRecord
 
   def details
     return nil if results["diff"].nil?
-    result = Diffoscope::Result.new(results["diff"])
+    result = Diffoscope::Result.new(results["diff"], source1: basename_1, source2: basename_2)
     result.to_unified_diff
+  end
+
+  def error_message
+    results['error'].presence || Array(results['errors']).join(', ')
   end
 
   def generate_diff
